@@ -50,6 +50,8 @@ public class ForwardTest extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+    	req.setCharacterEncoding("UTF-8");
+    	
+    	doGet(req, resp);
     }
 }

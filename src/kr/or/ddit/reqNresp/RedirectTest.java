@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @WebServlet("/redirectTest.do")
 public class RedirectTest extends HttpServlet {
@@ -20,17 +21,36 @@ public class RedirectTest extends HttpServlet {
 
          */
 
+        request.setCharacterEncoding("utf-8");
+
+
+
         //Redirect방식은 Request객체를 공유하지 못한다.
-        request.setAttribute("tel", "010-9999-8888");
+        //request.setAttribute("tel", "010-9999-8888"); 저장해도 못가져감
+//        response.sendRedirect(request.getContextPath() + "/redirectTargetTest.do");
+//----------------------안되는라인
+
+        //일단 파라미터 구하기
+        String username = request.getParameter("username");
+
+        // 기타 전달할 데이터를 구성한다
+        String tel = "010-9999-9888";
+
 
         // Response객체의 sendRedirect()메소드를 이용하여 이동한다.
         // -> 형식) Response객체.sendRedirect("이동할 URL");
         //          '이동할URL'은 전체 URL주소로 지정해주어야한다
         //         -> URL경로에 한글이 포함되어 있으면 URLEncoder객체를 이용하여 인코딩해서 지정해줘야한다.
+        response.sendRedirect(request.getContextPath()
+                + "/redirectTargetTest.do?username=" + URLEncoder.encode(username , "utf-8") + "&tel=" + tel);
+
     }
+
+
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
+        doGet(request, response);
     }
 }
