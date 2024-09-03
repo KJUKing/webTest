@@ -1,18 +1,19 @@
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>sessionLogin</title>
+<title>sessionLoginDb</title>
 </head>
 <body>
 <%
 	// JSP문서에서의 Session은 'session'이라는 이름으로 이미 저장되어 있다
-	String id = (String)session.getAttribute("id");
-	if(id == null){
+	MemberVO resVo = (MemberVO)session.getAttribute("resVo");
+	if(resVo == null){
 %>
-		<form action="<%=request.getContextPath()%>/sessionLogin.do" method="post">
+		<form action="<%=request.getContextPath()%>/sessionLoginDb.do" method="post">
 			<table border="1">
 				<tr>
 					<td>ID :</td>
@@ -30,8 +31,8 @@
 <%		
 	} else {
 %>
-		<h3><%=id%>님 반갑습니다.</h3><br>
-		<a href="<%=request.getContextPath()%>/sessionLogout.do">로그아웃</a>
+		<h3><%=resVo.getMem_name()%>님 반갑습니다.</h3><br>
+		<a href="<%=request.getContextPath()%>/sessionLogoutDb.do">로그아웃</a>
 <%
 	}
 %>
