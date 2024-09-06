@@ -6,7 +6,10 @@ public class MemberVO {
 	private String mem_name;
 	private String mem_tel;
 	private String mem_addr;
-	
+	private String mem_photo;
+
+
+
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -36,5 +39,11 @@ public class MemberVO {
 	}
 	public void setMem_addr(String mem_addr) {
 		this.mem_addr = mem_addr;
+	}
+	public String getMem_photo() {
+		return mem_photo;
+	}
+	public void setMem_photo(String mem_photo) {
+		this.mem_photo = mem_photo;
 	}
 }

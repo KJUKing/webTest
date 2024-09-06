@@ -39,6 +39,9 @@
                     dataType: "json" // 응답으로 받을 데이터의 타입
                 });
             });
+            $('#lprodBtn2').on('click', function () {
+                location.href = "<%=request.getContextPath()%>/json/lprodList2.do";
+            });
         });
 
 
@@ -46,6 +49,7 @@
 </head>
 <body>
 <input type="button" id="lprodBtn" value="Lprod자료 가져오기">
+<input type="button" id="lprodBtn2" value="Lprod자료 가져오기2">
 <h3>Lprod 자료 목록</h3>
 <div id="result"></div>
 
